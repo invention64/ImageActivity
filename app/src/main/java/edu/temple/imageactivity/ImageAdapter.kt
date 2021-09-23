@@ -34,7 +34,7 @@ class ImageAdapter (val _context: Context, _imageObjects: Array<Image>) : BaseAd
         if (convertView is ConstraintLayout)
             layout = convertView
         else
-            layout = inflater.inflate(R.layout.activity_main, null)
+            layout = inflater.inflate(R.layout.activity_main, null) // What's the right layout here?
             // layout = inflater.inflate(r.layout.spinner_layout, null)
 
         // I also don't see where the imageViews come from... I thought this view was for the big display
