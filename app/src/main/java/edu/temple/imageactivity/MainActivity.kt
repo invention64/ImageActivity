@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = ImageAdapter(this, getImageData())
     }
 
+    // returns all the mountain images and their descriptions
     fun getImageData() : Array<Image> {
         val images = arrayOf(Image("Mountain in China",R.drawable.chinamountain),
             Image("Mountain Fog",R.drawable.foggymountain),

@@ -7,10 +7,21 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.RecyclerView
 
-class ImageAdapter (val _context: Context, _imageObjects: Array<Image>) : BaseAdapter() {
+class ImageAdapter (val _context: Context, _imageObjects: Array<Image>) : RecyclerView.Adapter<Image>() {
+    // https://developer.android.com/guide/topics/ui/layout/recyclerview
+    // Implement this. It's a slightly different pattern than the in class example
     val images = _imageObjects
     val inflater = LayoutInflater.from(_context) // idk what this does
+
+    // ViewHolder class that will be custom for my image layout
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imageView : ImageView
+        init {
+
+        }
+    }
 
     override fun getCount(): Int {
         return images.size
