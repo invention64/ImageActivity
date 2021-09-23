@@ -3,6 +3,8 @@ package edu.temple.imageactivity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,10 +14,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
-        recyclerView.layoutManager = GridLayoutManager(baseContext, 3)
+        recyclerView.layoutManager = GridLayoutManager(this, 3)
+
+        // get the reference to the two main activity elements
+        val textView = findViewById<TextView>(R.id.imageName)
+        val imageView = findViewById<ImageView>(R.id.imageView)
 
         // it seems I need to set an adapter or some thing
-        recyclerView.adapter = ImageAdapter(this, getImageData())
+        recyclerView.adapter = ImageAdapter(this, getImageData(), textView, imageView)
     }
 
     // returns all the mountain images and their descriptions
