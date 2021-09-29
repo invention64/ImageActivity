@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
             Image("Ozark",R.drawable.ozark),
             Image("Qinling Mountains",R.drawable.qinling_mountains),
             Image("Rocky Mountain Frozen Lake",R.drawable.rocky_mountain_national_park_frozen_lake),
-//            Image("Smokey Mountain",R.drawable.smokey_mountains),
-//            Image("Snowy Australian Mountain Range",R.drawable.snowy_mountains_range_in_new_south_wales_australia_wallpaper)
+            Image("Smokey Mountain",R.drawable.smokey_mountains),
+            Image("Snowy Australian Mountain Range",R.drawable.snowy_mountains_range_in_new_south_wales_australia_wallpaper)
         );
         return images
     }

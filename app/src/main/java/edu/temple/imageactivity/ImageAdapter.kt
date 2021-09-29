@@ -43,14 +43,16 @@ class ImageAdapter (val _context: Context, _imageObjects: Array<Image>, _textVie
         var img = images[position].resource
         holder.imageView.setImageResource(img)
         // it's actually easier to get the bitmap once it's been loaded into the image view so I'm gonna use that
-        var bitmap = holder.imageView.drawable.toBitmap(600,400)
+        var bitmap = holder.imageView.drawable.toBitmap(600,300)
+        var largeBitmap = holder.imageView.drawable.toBitmap(1200, 600)
         // so setting this should resize the images bitmap
         holder.imageView.setImageBitmap(bitmap)
 
         //  set image call back to set the big image and the text
         holder.imageView.setOnClickListener{
-            topImageView.setImageResource(img)
-            topImageView.maxWidth = 300
+            // was still getting crashes since I'm using wallpapers, so I figure I have no choice but to resize the big image too
+            topImageView.setImageBitmap(largeBitmap)
+
             // add image content details
             topImageView.contentDescription = images[position].name
             topTextView.text = images[position].name
