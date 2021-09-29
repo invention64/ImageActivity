@@ -1,5 +1,8 @@
 package edu.temple.imageactivity
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +10,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 
@@ -35,10 +39,18 @@ class ImageAdapter (val _context: Context, _imageObjects: Array<Image>, _textVie
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imageView.setImageResource(images[position].resource)
+        // resize image to avoid bugs with larger image sizes drawing on canvas
+        var img = images[position].resource
+        holder.imageView.setImageResource(img)
+        // it's actually easier to get the bitmap once it's been loaded into the image view so I'm gonna use that
+        var bitmap = holder.imageView.drawable.toBitmap(600,400)
+        // so setting this should resize the images bitmap
+        holder.imageView.setImageBitmap(bitmap)
+
         //  set image call back to set the big image and the text
         holder.imageView.setOnClickListener{
-            topImageView.setImageResource(images[position].resource)
+            topImageView.setImageResource(img)
+            topImageView.maxWidth = 300
             // add image content details
             topImageView.contentDescription = images[position].name
             topTextView.text = images[position].name
