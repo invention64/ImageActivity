@@ -39,6 +39,8 @@ class ImageAdapter (val _context: Context, _imageObjects: Array<Image>, _textVie
         //  set image call back to set the big image and the text
         holder.imageView.setOnClickListener{
             topImageView.setImageResource(images[position].resource)
+            // add image content details
+            topImageView.contentDescription = images[position].name
             topTextView.text = images[position].name
         }
     }

@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.imageName)
         val imageView = findViewById<ImageView>(R.id.imageView)
 
+
         // it seems I need to set an adapter or some thing
         recyclerView.adapter = ImageAdapter(this, getImageData(), textView, imageView)
     }
