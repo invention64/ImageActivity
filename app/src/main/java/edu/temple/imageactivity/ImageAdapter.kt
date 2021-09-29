@@ -1,5 +1,6 @@
 package edu.temple.imageactivity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.provider.MediaStore
@@ -10,6 +11,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
@@ -51,11 +53,17 @@ class ImageAdapter (val _context: Context, _imageObjects: Array<Image>, _textVie
         //  set image call back to set the big image and the text
         holder.imageView.setOnClickListener{
             // was still getting crashes since I'm using wallpapers, so I figure I have no choice but to resize the big image too
-            topImageView.setImageBitmap(largeBitmap)
-
-            // add image content details
-            topImageView.contentDescription = images[position].name
-            topTextView.text = images[position].name
+//            topImageView.setImageBitmap(largeBitmap)
+//
+//            // add image content details
+//            topImageView.contentDescription = images[position].name
+//            topTextView.text = images[position].name
+            val intent = Intent(context, DisplayActivity::class.java).apply {
+                putExtra("text", images[position].name)
+                putExtra("image", img)
+            }
+            // need to call the start activity from the top level context
+            context.startActivity(intent)
         }
     }
 
