@@ -26,23 +26,24 @@ class MainActivity : AppCompatActivity() {
 
     // returns all the mountain images and their descriptions
     fun getImageData() : Array<Image> {
-        val images = arrayOf(Image("Mountain in China",R.drawable.chinamountain),
-            Image("Mountain Fog",R.drawable.foggymountain),
-            Image("Gravelly Mountaintop",R.drawable.gravelmountain),
-            Image("Spiky Icy Mountains",R.drawable.icespike),
-            Image("Reflection in a lake",R.drawable.mountainreflection),
-            Image("Mountain-top Trail",R.drawable.mountaintrail),
-            Image("Orange Canyon",R.drawable.orangecanyon),
-            Image("Orangish Mountain",R.drawable.orangemountain),
-            Image("Swiss Alps",R.drawable.switzerland),
-            Image("Bucegi Mountains",R.drawable.bucegi_mountains_romania),
-            Image("Bushy Mountains",R.drawable.bushy_mountain),
-            Image("Desert Mountains",R.drawable.desert_mountains),
-            Image("Ozark",R.drawable.ozark),
-            Image("Qinling Mountains",R.drawable.qinling_mountains),
-            Image("Rocky Mountain Frozen Lake",R.drawable.rocky_mountain_national_park_frozen_lake),
-            Image("Smokey Mountain",R.drawable.smokey_mountains),
-            Image("Snowy Australian Mountain Range",R.drawable.snowy_mountains_range_in_new_south_wales_australia_wallpaper)
+        val imgArr = resources.getStringArray(R.array.mountains)
+        val images = arrayOf(Image(imgArr[0],R.drawable.chinamountain),
+            Image(imgArr[1],R.drawable.foggymountain),
+            Image(imgArr[2],R.drawable.gravelmountain),
+            Image(imgArr[3],R.drawable.icespike),
+            Image(imgArr[4],R.drawable.mountainreflection),
+            Image(imgArr[5],R.drawable.mountaintrail),
+            Image(imgArr[6],R.drawable.orangecanyon),
+            Image(imgArr[7],R.drawable.orangemountain),
+            Image(imgArr[8],R.drawable.switzerland),
+            Image(imgArr[9],R.drawable.bucegi_mountains_romania),
+            Image(imgArr[10],R.drawable.bushy_mountain),
+            Image(imgArr[11],R.drawable.desert_mountains),
+            Image(imgArr[12],R.drawable.ozark),
+            //Image(imgArr[13],R.drawable.qinling_mountains),
+            Image(imgArr[14],R.drawable.rocky_mountain_national_park_frozen_lake),
+            Image(imgArr[15],R.drawable.smokey_mountains),
+            Image(imgArr[16],R.drawable.snowy_mountains_range_in_new_south_wales_australia_wallpaper)
         );
         return images
     }

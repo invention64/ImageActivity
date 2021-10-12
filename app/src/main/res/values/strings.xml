@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Mountain Viewer</string>
+    <string-array name="mountains">
+        <item>Mountain in China</item>
+        <item>Mountain Fog</item>
+        <item>Gravelly Mountaintop</item>
+        <item>Spiky Icy Mountains</item>
+        <item>Reflection in a lake</item>
+        <item>Mountain-top Trail</item>
+        <item>Orange Canyon</item>
+        <item>Orangish Mountain</item>
+        <item>Swiss Alps</item>
+        <item>Bucegi Mountains</item>
+        <item>Bushy Mountains</item>
+        <item>Desert Mountains</item>
+        <item>Ozark</item>
+        <item>Qinling Mountains</item>
+        <item>Rocky Mountain Frozen Lake</item>
+        <item>Smokey Mountain</item>
+        <item>Snowy Australian Mountain Range</item>
+    </string-array>
 </resources>
