@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mountain Viewer</string>
+    <string-array name="mountains">
+        <item>Montagne en Chine</item>
+        <item>Brouillard de montagne</item>
+        <item>Sommet de la montagne graveleuse</item>
+        <item>Montagnes glacées épineuses</item>
+        <item>Réflexion dans un lac</item>
+        <item>Sentier au sommet d'une montagne</item>
+        <item>Canyon d'Orange</item>
+        <item>Montagne orangique</item>
+        <item>Alpes suisses</item>
+        <item>Monts Bucegi</item>
+        <item>Montagnes touffues</item>
+        <item>Montagnes du désert</item>
+        <item>Ozark</item>
+        <item>Qinling Montagnes</item>
+        <item>Lac gelé des montagnes Rocheuses</item>
+        <item>Montagne Smokey</item>
+        <item>Chaîne de montagnes australienne enneigée</item>
+    </string-array>
+</resources>
