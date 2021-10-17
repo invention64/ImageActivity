@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentContainerView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,16 +13,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        var selectionFragment = SelectionFragment.getInstance(getImageData())
+        var displayFragment = DisplayFragment()
 
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
-
-        // get the reference to the two main activity elements
-        val textView = findViewById<TextView>(R.id.imageName)
-        val imageView = findViewById<ImageView>(R.id.imageView)
-
-        // it seems I need to set an adapter or some thing
-        recyclerView.adapter = ImageAdapter(this, getImageData(), textView, imageView)
+        supportFragmentManager.beginTransaction()
+            .add(R.id.selectionFragmentContainerView, selectionFragment)
+            .add(R.id.displayFragmentContainerView, displayFragment)
+            .commit()
     }
 
     // returns all the mountain images and their descriptions

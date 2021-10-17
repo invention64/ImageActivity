@@ -16,33 +16,31 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 
-class ImageAdapter (val _context: Context, _imageObjects: Array<Image>, _textView : TextView, _imageView : ImageView) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+class ImageAdapter (val _context: Context, _imageObjects: Array<Image>, _ocl: View.OnClickListener) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
     // https://developer.android.com/guide/topics/ui/layout/recyclerview
     // Implement this. It's a slightly different pattern than the in class example
     private val images = _imageObjects
     private val context = _context
-    private val topImageView = _imageView
-    private val topTextView = _textView
+    val ocl = _ocl
 
     // ViewHolder class that will be custom for my image layout
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageView : ImageView
-
-        init {
-            imageView = view.findViewById(R.id.imageView)
-        }
+    class ViewHolder(view: View, ocl : View.OnClickListener) : RecyclerView.ViewHolder(view) {
+        val imageView = view.apply { setOnClickListener(ocl) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.grid_image, parent, false)
 
-        return ViewHolder(view)
+        return ViewHolder(view, ocl)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // resize image to avoid bugs with larger image sizes drawing on canvas
         var img = images[position].resource
+
+        holder.imageView as ImageView
+
         holder.imageView.setImageResource(img)
         // it's actually easier to get the bitmap once it's been loaded into the image view so I'm gonna use that
         var bitmap = holder.imageView.drawable.toBitmap(600,300)
@@ -51,20 +49,20 @@ class ImageAdapter (val _context: Context, _imageObjects: Array<Image>, _textVie
         holder.imageView.setImageBitmap(bitmap)
 
         //  set image call back to set the big image and the text
-        holder.imageView.setOnClickListener{
-            // was still getting crashes since I'm using wallpapers, so I figure I have no choice but to resize the big image too
-//            topImageView.setImageBitmap(largeBitmap)
-//
-//            // add image content details
-//            topImageView.contentDescription = images[position].name
-//            topTextView.text = images[position].name
-            val intent = Intent(context, DisplayActivity::class.java).apply {
-                putExtra("text", images[position].name)
-                putExtra("image", img)
-            }
-            // need to call the start activity from the top level context
-            context.startActivity(intent)
-        }
+//        holder.imageView.setOnClickListener{
+//            // was still getting crashes since I'm using wallpapers, so I figure I have no choice but to resize the big image too
+////            topImageView.setImageBitmap(largeBitmap)
+////
+////            // add image content details
+////            topImageView.contentDescription = images[position].name
+////            topTextView.text = images[position].name
+////            val intent = Intent(context, DisplayActivity::class.java).apply {
+////                putExtra("text", images[position].name)
+////                putExtra("image", img)
+////            }
+////            // need to call the start activity from the top level context
+////            context.startActivity(intent)
+//        }
     }
 
     // I love this syntax.

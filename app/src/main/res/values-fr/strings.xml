@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mountain Viewer</string>
+    <string name="app_name">Visionneuse de Montagne</string>
     <string-array name="mountains">
         <item>Montagne en Chine</item>
         <item>Brouillard de montagne</item>
         <item>Sommet de la montagne graveleuse</item>
         <item>Montagnes glacées épineuses</item>
         <item>Réflexion dans un lac</item>
-        <item>Sentier au sommet d'une montagne</item>
-        <item>Canyon d'Orange</item>
+        <item>Sentier au sommet d\'une montagne</item>
+        <item>Canyon d\'Orange</item>
         <item>Montagne orangique</item>
         <item>Alpes suisses</item>
         <item>Monts Bucegi</item>
