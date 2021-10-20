@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 class SelectionFragment : Fragment() {
     lateinit var layout: View
 
+    lateinit var imageArray : Array<Image>
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        imageArray = getImageData()
         super.onCreate(savedInstanceState)
     }
 
@@ -21,28 +24,57 @@ class SelectionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // create the layout
         layout = inflater.inflate(R.layout.fragment_selection, container, false)
         var recycler = layout.findViewById<RecyclerView>(R.id.recyclerView)
         recycler.layoutManager = GridLayoutManager(layout.context, 3)
-        var arr : ArrayList<Image> = ArrayList<Image>()
-        val names = arguments?.getStringArrayList("names")!!
 
-        // I am definitely doing this wrong
-        for ((count, r) in arguments?.getIntegerArrayList("resources")!!.withIndex()) {
-            arr.add(Image(names[count], r))
-        }
+        /*
+//        var arr : ArrayList<Image> = ArrayList<Image>()
+//        val names : ArrayList<String> = arguments?.getStringArrayList("names")!!
+//
+//        // I am definitely doing this wrong
+//        for ((count, r) in arguments?.getIntegerArrayList("resources")!!.withIndex()) {
+//            arr.add(Image(names[count], r))
+//        }
+*/
 
         val onClickListener = View.OnClickListener {
-            val itemPosition = recycler.getChildAdapterPosition(it)
 
         }
 
-        recycler.adapter = ImageAdapter(layout.context, arr.toArray() as Array<Image>, onClickListener)
+        recycler.adapter = ImageAdapter(layout.context, imageArray, onClickListener)
+
         return layout
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    // Wrong way to do this entirely my dudes!
+    fun getImageData() : Array<Image> {
+        val imgArr = resources.getStringArray(R.array.mountains)
+        val images = arrayOf(Image(imgArr[0],R.drawable.chinamountain),
+            Image(imgArr[1],R.drawable.foggymountain),
+            Image(imgArr[2],R.drawable.gravelmountain),
+            Image(imgArr[3],R.drawable.icespike),
+            Image(imgArr[4],R.drawable.mountainreflection),
+            Image(imgArr[5],R.drawable.mountaintrail),
+            Image(imgArr[6],R.drawable.orangecanyon),
+            Image(imgArr[7],R.drawable.orangemountain),
+            Image(imgArr[8],R.drawable.switzerland),
+            Image(imgArr[9],R.drawable.bucegi_mountains_romania),
+            Image(imgArr[10],R.drawable.bushy_mountain),
+            Image(imgArr[11],R.drawable.desert_mountains),
+            Image(imgArr[12],R.drawable.ozark),
+            //Image(imgArr[13],R.drawable.qinling_mountains),
+            Image(imgArr[14],R.drawable.rocky_mountain_national_park_frozen_lake),
+            Image(imgArr[15],R.drawable.smokey_mountains),
+            Image(imgArr[16],R.drawable.snowy_mountains_range_in_new_south_wales_australia_wallpaper)
+        );
+        return images
     }
 
     companion object {

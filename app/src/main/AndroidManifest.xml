@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_mountain_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImageActivity">
-        <activity
-            android:name=".DisplayActivity"
-            android:exported="true" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -25,7 +25,7 @@ class ImageAdapter (val _context: Context, _imageObjects: Array<Image>, _ocl: Vi
 
     // ViewHolder class that will be custom for my image layout
     class ViewHolder(view: View, ocl : View.OnClickListener) : RecyclerView.ViewHolder(view) {
-        val imageView = view.apply { setOnClickListener(ocl) }
+        var imageView = view.apply { setOnClickListener(ocl) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,14 +39,16 @@ class ImageAdapter (val _context: Context, _imageObjects: Array<Image>, _ocl: Vi
         // resize image to avoid bugs with larger image sizes drawing on canvas
         var img = images[position].resource
 
-        holder.imageView as ImageView
+        // had to change it to this since I switched layouts somewhere, somehow!
+        var imgView : ImageView = holder.imageView.findViewById<ImageView>(R.id.imageView)
 
-        holder.imageView.setImageResource(img)
+
+        imgView.setImageResource(img)
         // it's actually easier to get the bitmap once it's been loaded into the image view so I'm gonna use that
-        var bitmap = holder.imageView.drawable.toBitmap(600,300)
-        var largeBitmap = holder.imageView.drawable.toBitmap(1200, 600)
+        var bitmap = imgView.drawable.toBitmap(600,300)
+        var largeBitmap = imgView.drawable.toBitmap(1200, 600)
         // so setting this should resize the images bitmap
-        holder.imageView.setImageBitmap(bitmap)
+        imgView.setImageBitmap(bitmap)
 
         //  set image call back to set the big image and the text
 //        holder.imageView.setOnClickListener{
