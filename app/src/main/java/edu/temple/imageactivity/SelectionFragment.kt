@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -13,10 +14,12 @@ class SelectionFragment : Fragment() {
     lateinit var layout: View
 
     lateinit var imageArray : Array<Image>
+    private lateinit var model: ImageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         imageArray = getImageData()
         super.onCreate(savedInstanceState)
+        model = ViewModelProvider(this).get(ImageViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -40,7 +43,9 @@ class SelectionFragment : Fragment() {
 */
 
         val onClickListener = View.OnClickListener {
-
+            val pos = recycler.getChildAdapterPosition(it)
+            println("Position clicked is: $pos")
+            model.select(imageArray[pos])
         }
 
         recycler.adapter = ImageAdapter(layout.context, imageArray, onClickListener)
